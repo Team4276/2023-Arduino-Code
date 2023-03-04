@@ -4,14 +4,14 @@ const int DIO_PIN_0 = 5;
 const int DIO_PIN_1 = 4;
 const int DIO_PIN_2 = 3;
 
-const int MODE_AUTO = 0;
-const int MODE_TELEOP_NORMAL = 1;
-const int MODE_TELEOP_BALANCING = 2;
-const int MODE_TELEOP_HOLD_POSITION = 3;
-const int MODE_PURPLE_FOR_CUBE = 4;
-const int MODE_YELLOW_FOR_CONE = 5;
-const int MODE_UNUSED = 6;
-const int MODE_DEFAULT = 7;
+const int MODE_OFF = 0;
+const int MODE_AUTO = 1;
+const int MODE_TELEOP_NORMAL = 2;
+const int MODE_TELEOP_BALANCING = 3;
+const int MODE_TELEOP_HOLD_POSITION = 4;
+const int MODE_PURPLE_FOR_CUBE = 5;
+const int MODE_YELLOW_FOR_CONE = 6;
+const int MODE_UNUSED_7 = 7;
 
 #include <Adafruit_NeoPixel.h>
 
@@ -48,6 +48,9 @@ int getMode() {
 void loop() {
 
   int mode = getMode();
+  Serial.print("mode = ");
+  Serial.println(mode);
+
   switch (mode) {
     case MODE_AUTO:
       break;
@@ -101,8 +104,7 @@ void loop() {
       delay(500); // Wait for 500 milliseconds (0.5 seconds)
       break;
 
-    case MODE_UNUSED:
-    case MODE_DEFAULT:
+    case MODE_UNUSED_7:
     default:
         break;
 
